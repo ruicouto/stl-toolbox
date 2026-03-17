@@ -1,0 +1,17 @@
+{
+  "name": "stl-cutter",
+  "version": "1.0.0",
+  "description": "Cut STL files along X, Y, or Z axis",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "three": "^0.169.0"
+  }
+}

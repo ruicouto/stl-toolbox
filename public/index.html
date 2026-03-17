@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLT Toolbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SLT Toolbox</h1>
+      <p>Upload an STL to cut or preview.</p>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" role="tab" id="tab-cut" aria-selected="true" aria-controls="panel-cut">Cut</button>
+      <button type="button" class="tab" role="tab" id="tab-preview" aria-selected="false" aria-controls="panel-preview">Preview</button>
+    </nav>
+
+    <div id="panel-cut" class="tab-panel active" role="tabpanel" aria-labelledby="tab-cut">
+      <div class="panel upload-panel">
+        <label class="file-label">
+          <span>Choose STL file</span>
+          <input type="file" id="file" accept=".stl" />
+        </label>
+        <p id="filename" class="filename"></p>
+      </div>
+
+      <div class="panel preview-panel">
+        <h2>Preview</h2>
+        <div class="view-presets">
+          <span>View:</span>
+          <button type="button" id="view-top" title="View from top">Top</button>
+          <button type="button" id="view-side" title="View from side">Side</button>
+          <button type="button" id="view-other" title="View from other side">Other side</button>
+        </div>
+        <div id="preview" class="preview">
+          <p id="preview-placeholder" class="placeholder">Upload a file to preview</p>
+        </div>
+      </div>
+
+      <div class="panel slice-panel">
+        <h2>Slice</h2>
+        <div class="axis-row">
+          <span>Axis:</span>
+          <label><input type="radio" name="axis" value="x" /> X</label>
+          <label><input type="radio" name="axis" value="y" /> Y</label>
+          <label><input type="radio" name="axis" value="z" checked /> Z</label>
+        </div>
+        <div class="position-row">
+          <label>Cut position: <span id="position-mm">—</span> mm</label>
+          <input type="range" id="position-slider" min="0" max="100" step="0.1" value="50" />
+          <span id="position-range-hint" class="hint"></span>
+        </div>
+        <button type="button" id="slice-btn" disabled>Slice</button>
+        <p id="slice-status" class="status"></p>
+      </div>
+
+      <div class="panel results-panel">
+        <h2>Results</h2>
+        <ul id="results-list" class="results-list"></ul>
+        <p id="results-empty" class="results-empty">No slices yet. Use Slice to add results.</p>
+      </div>
+    </div>
+
+    <div id="panel-preview" class="tab-panel" role="tabpanel" aria-labelledby="tab-preview" hidden>
+      <div class="panel upload-panel">
+        <label class="file-label">
+          <span>Choose STL file</span>
+          <input type="file" id="file-preview" accept=".stl" />
+        </label>
+        <p id="filename-preview" class="filename"></p>
+      </div>
+      <div class="panel preview-only-panel">
+        <h2>Preview</h2>
+        <div class="view-presets">
+          <span>View:</span>
+          <button type="button" id="view-top-preview" title="View from top">Top</button>
+          <button type="button" id="view-side-preview" title="View from side">Side</button>
+          <button type="button" id="view-other-preview" title="View from other side">Other side</button>
+        </div>
+        <div id="preview-only" class="preview preview-only">
+          <p id="preview-only-placeholder" class="placeholder">Upload a file to preview</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/vendor/three/build/three.module.js",
+      "three/addons/": "/vendor/three/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="app.js?v=7"></script>
+</body>
+</html>

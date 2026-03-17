@@ -1,0 +1,258 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #1a1b26;
+  color: #c0caf5;
+  min-height: 100vh;
+}
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+header {
+  margin-bottom: 1.5rem;
+}
+header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #7aa2f7;
+}
+header p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #a9b1d6;
+}
+
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #363a52;
+}
+.tab {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #a9b1d6;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+}
+.tab:hover {
+  color: #c0caf5;
+}
+.tab.active {
+  color: #7aa2f7;
+  border-bottom-color: #7aa2f7;
+}
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+
+.preview-only-panel .preview-only {
+  min-height: 420px;
+  height: 420px;
+}
+
+.panel {
+  background: #24283b;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #7aa2f7;
+}
+.file-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #414868;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.file-label:hover {
+  background: #565f89;
+}
+.file-label input {
+  display: none;
+}
+.filename {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #9ece6a;
+}
+.preview {
+  width: 100%;
+  min-height: 280px;
+  height: 280px;
+  background: #16161e;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.preview .placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  color: #565f89;
+  font-size: 0.9rem;
+  z-index: 1;
+  pointer-events: none;
+}
+.view-presets {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.view-presets span {
+  font-size: 0.9rem;
+  color: #a9b1d6;
+}
+.view-presets button {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.85rem;
+  background: #414868;
+  color: #c0caf5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.view-presets button:hover:not(:disabled) {
+  background: #565f89;
+}
+.view-presets button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.preview.ready .placeholder,
+.preview-only.ready .placeholder {
+  display: none;
+}
+.preview canvas,
+.preview-only canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  z-index: 0;
+}
+.axis-row, .position-row {
+  margin-bottom: 1rem;
+}
+.position-row label {
+  font-size: 0.9rem;
+}
+#position-slider {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  accent-color: #7aa2f7;
+}
+#position-slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.position-row .hint {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #565f89;
+}
+.axis-row span, .position-row label {
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+}
+.axis-row label {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+#slice-btn {
+  padding: 0.6rem 1.2rem;
+  background: #7aa2f7;
+  color: #1a1b26;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#slice-btn:hover:not(:disabled) {
+  background: #89b4fa;
+}
+#slice-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.status {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: #9ece6a;
+}
+.status.error {
+  color: #f7768e;
+}
+
+.results-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #363a52;
+}
+.result-item:last-child {
+  border-bottom: none;
+}
+.result-label {
+  font-size: 0.9rem;
+  color: #a9b1d6;
+}
+.result-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.result-dl {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  background: #414868;
+  color: #c0caf5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.result-dl:hover {
+  background: #565f89;
+}
+.results-empty {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #565f89;
+}
